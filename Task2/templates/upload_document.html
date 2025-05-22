@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Document{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Upload Document</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Select Document</label>
+                            <input type="file" class="form-control" id="file" name="file" 
+                                   accept=".pdf,.doc,.docx,.txt" required>
+                            <div class="form-text">
+                                Supported formats: PDF, DOC, DOCX, TXT<br>
+                                Maximum file size: 16MB
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" name="description" maxlength="255" placeholder="e.g. Employment Contract">
+                        </div>
+                        <div class="alert alert-info">
+                            <h5><i class="fas fa-shield-alt"></i> Security Features</h5>
+                            <ul class="mb-0">
+                                <li>Files are encrypted using AES-256</li>
+                                <li>SHA-256 hash verification</li>
+                                <li>HMAC integrity check</li>
+                                <li>Secure storage</li>
+                            </ul>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> Upload Document
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

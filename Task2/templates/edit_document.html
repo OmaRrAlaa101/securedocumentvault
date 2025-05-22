@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Document - Secure Auth System{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-edit me-2"></i>Edit Document Description
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Filename:</strong></label>
+                            <div class="form-control">{{ document.original_filename }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Upload Date:</strong></label>
+                            <div class="form-control">{{ document.upload_date.strftime('%Y-%m-%d %H:%M:%S') }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label"><strong>Description:</strong></label>
+                            <textarea class="form-control" id="description" name="description" rows="3" maxlength="255">{{ document.description or '' }}</textarea>
+                            <div class="form-text">Maximum 255 characters.</div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Save Changes
+                            </button>
+                            <a href="{{ url_for('list_documents') }}" class="btn btn-secondary">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Login - SecureDocs{% endblock %}
+
+{% block content %}
+<style>
+.bg-login {
+    background: linear-gradient(120deg, #232526 0%, #414345 100%), url('/static/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+.login-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.2);
+    padding: 2rem 2.5rem;
+    max-width: 400px;
+    margin: auto;
+}
+.login-logo {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+.btn-google {
+    background: #fff;
+    color: #444;
+    border: 1px solid #ddd;
+}
+.btn-google:hover {
+    background: #f5f5f5;
+}
+.btn-github {
+    background: #24292e;
+    color: #fff;
+}
+.btn-github:hover {
+    background: #444;
+    color: #fff;
+}
+</style>
+<div class="bg-login d-flex align-items-center justify-content-center">
+    <div class="login-card w-100">
+        <div class="text-center mb-4">
+            <span class="login-logo"><i class="fas fa-shield-alt"></i></span>
+            <h3 class="fw-bold">Login to SecureDocs</h3>
+        </div>
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="mb-3">
+                <label for="email" class="form-label"><i class="fas fa-envelope me-2"></i>Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label"><i class="fas fa-lock me-2"></i>Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                <label class="form-check-label" for="remember">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-3">Sign In</button>
+        </form>
+        <div class="text-center mb-2">
+            <a href="{{ url_for('forgot_password') }}" class="small">Forgot password?</a>
+        </div>
+        <div class="text-center mb-2">
+            <a href="{{ url_for('signup') }}" class="small">Don't have an account? Sign Up</a>
+        </div>
+        <div class="text-center mb-2">
+            <a href="{{ url_for('google_login') }}" class="btn btn-google w-100 mb-2">
+                <i class="fab fa-google me-2"></i>Sign in with Google
+            </a>
+            <a href="{{ url_for('github_login') }}" class="btn btn-github w-100">
+                <i class="fab fa-github me-2"></i>Sign in with GitHub
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - Secure Auth System{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4 text-center"><i class="fas fa-user me-2"></i>Profile</h2>
+            <form method="POST" enctype="multipart/form-data" action="{{ url_for('profile') }}">
+                <div class="mb-3 text-center">
+                    <img src="{{ user.profile_pic_url if user.profile_pic_url else 'https://ui-avatars.com/api/?name=' + user.username|urlencode + '&background=random' }}" class="rounded-circle" width="120" height="120" alt="Profile Picture">
+                </div>
+                <div class="mb-3">
+                    <label for="profile_pic" class="form-label">Profile Picture</label>
+                    <input type="file" class="form-control" id="profile_pic" name="profile_pic" accept="image/*">
+                    <div class="form-text">Max size: 5MB. Allowed: JPG, PNG, GIF.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" value="{{ user.phone if user.phone else '' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <input type="text" class="form-control" id="department" name="department" value="{{ user.department if user.department else '' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="job_title" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="job_title" name="job_title" value="{{ user.job_title if user.job_title else '' }}">
+                </div>
+                <button type="submit" class="btn btn-success w-100 mb-3">
+                    <i class="fas fa-save me-2"></i>Update
+                </button>
+                <div class="text-center">
+                    <a href="{{ url_for('change_password') }}" class="btn btn-link">Change Password</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 
